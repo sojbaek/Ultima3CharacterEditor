@@ -1,0 +1,1986 @@
+/* ****************************************************************************
+U3Demo.txt
+
+This file defines the "View Animation" shown in the game's introduction.
+Hopefully, it is self-explanatory enough that you should feel free to
+fool around with it and see what can be done.
+
+Parameters must be separated from each other by spaces.  Behaviour for 
+illegal syntax is undefined.  The parser for this file is case-insensitive.
+
+Ultima III for Windows
+http://www.xmission.com/~mhansen/ultima3/
+**************************************************************************** */
+
+///////////////////////////////////////////////////////////////////////////////
+// Parameters
+///////////////////////////////////////////////////////////////////////////////
+
+// Duration of each frame, in milliseconds.  Defaults to 250.
+frameduration 250
+
+// Total Number of frames.
+// This cannot be more than 1024.  If you go over the maximum number of 
+// frames, additional frames will be ignored.  Defaults to 1024.
+totalframes 366
+
+///////////////////////////////////////////////////////////////////////////////
+// Tile definitions
+// Names are truncated to 13 characters.  If the parser finds an undefined 
+// symbol, it assumes a value of 0.  No more than 100 definitions may be made.
+// 
+// define string n
+///////////////////////////////////////////////////////////////////////////////
+
+define water 0
+define grass 1
+define brush 2
+define forest 3
+define mountain 4
+define dungeon 5
+define town 6
+define castle 7
+define brick 8
+define chest 9
+define horse 10
+define ship 11
+define whirl 12
+define serpent 13
+define manowar 14
+define pirates 15
+define merchant 16
+define jester 17
+define guard 18
+define king 19
+define fighter 20
+define cleric 21
+define wizard 22
+define thief 23
+define orc 24
+define skeleton 25
+define giant 26
+define demon 27
+define pincher 28
+define dragon 29
+define balron 30
+define exodus 31
+define force 32
+define fire 33
+define moongate 34
+define wall 35
+define blank 36
+define _ 37
+define a 38
+define b 39
+define c 40
+define d 41
+define e 42
+define f 43
+define g 44
+define h 45
+define i 46
+define u 47
+define y 48
+define l 49
+define m 50
+define n 51
+define o 52
+define p 53
+define w 54
+define r 55
+define s 56
+define t 57
+define serpenthead 58
+define serpenttail 59
+define normalball 60
+define magicball 61
+define shrine 62
+define avatar 63
+
+///////////////////////////////////////////////////////////////////////////////
+// Frames (starting with 0)
+// 
+// frame n                 // Defines the beginning of a new frame (frame #n)
+// frame + n               // Defines the beginning of a new frame (frame #(last frame# + n))
+// deco   <shape#> <x> <y> // Superimpose the shape on the map
+// change <shape#> <x> <y> // Change the map tile
+// reset                   // Reload the map from demo.ult - MUST BE THE FIRST IN THE FRAME
+///////////////////////////////////////////////////////////////////////////////
+
+// Set up initial state
+frame 0 // if no frame is declared, the parser assumes you start with frame 0
+reset
+
+// Enter the demons
+
+frame + 3
+deco demon 17 1 // If you define more than one deco in the frame, earlier ones are drawn on top
+
+frame + 1
+deco demon 16 2
+
+frame + 1
+deco demon 15 2
+
+frame + 1
+deco demon 15 2
+deco demon 17 1
+
+frame + 1
+deco demon 15 2
+deco demon 16 1
+
+frame + 1
+deco demon 14 2
+deco demon 16 1
+
+frame + 1
+deco demon 14 2
+deco demon 15 1
+
+frame + 1
+deco demon 14 2
+deco demon 15 1
+deco demon 17 1
+
+frame + 1
+deco demon 14 2
+deco demon 15 1
+deco demon 17 2
+
+frame + 1
+deco demon 14 2
+deco demon 15 1
+deco demon 16 3
+
+frame + 1
+deco demon 14 2
+deco demon 15 1
+deco demon 16 3
+deco demon 17 1
+
+frame + 1
+deco demon 14 2
+deco demon 15 1
+deco demon 16 3
+deco demon 16 2
+
+frame + 1
+deco demon 14 2
+deco demon 15 1
+deco demon 16 3
+deco demon 15 3
+
+// Demons in the L shape
+frame + 1
+deco demon 14 1
+deco demon 14 2
+deco demon 15 3
+deco demon 16 3
+// Glue the demons onto the landscape so we can stop drawing them every frame
+change demon 14 1
+change demon 14 2
+change demon 15 3
+change demon 16 3
+
+// Enter the party
+
+frame + 1
+deco fighter 5 1
+
+frame + 1
+deco fighter 4 1
+
+frame + 1
+deco fighter 4 2
+
+frame + 1
+deco fighter 4 3
+
+frame + 1
+deco fighter 5 3
+
+frame + 1
+
+frame + 1
+deco cleric 5 1
+
+frame + 1
+deco cleric 4 1
+
+frame + 1
+deco cleric 4 2
+
+frame + 1
+deco cleric 4 3
+
+frame + 1
+deco cleric 5 3
+
+frame + 1
+
+frame + 1
+deco wizard 5 1
+
+frame + 1
+deco wizard 4 1
+
+frame + 1
+deco wizard 4 2
+
+frame + 1
+deco wizard 4 3
+
+frame + 1
+deco wizard 5 3
+
+frame + 1
+
+frame + 1
+deco thief 5 4
+
+frame + 1
+deco thief 4 4
+
+frame + 1
+deco thief 4 3
+
+frame + 1
+deco thief 5 3
+
+frame + 1
+
+// Everyone's now in the boat... move the boat across the water
+
+frame + 1
+deco ship 6 3
+change water 5 3
+
+frame + 1
+deco ship 7 3
+
+frame + 1
+deco ship 8 3
+
+frame + 1
+deco ship 9 4
+
+frame + 1
+deco ship 10 4
+
+frame + 1
+deco ship 11 4
+
+frame + 1
+change ship 11 4
+
+// The ship has landed... get the first two people out
+
+frame + 1
+deco fighter 11 4
+
+frame + 1
+
+frame + 1
+deco fighter 12 4
+
+frame + 1
+deco fighter 13 4
+
+frame + 1
+deco fighter 13 4
+deco thief 11 4
+
+frame + 1
+deco fighter 13 4
+
+frame + 1
+deco fighter 13 4
+deco thief 12 4
+
+frame + 1
+deco fighter 14 4
+deco thief 12 4
+
+frame + 1
+deco fighter 14 4
+deco thief 13 4
+// Remove the deco demons and replace them with the landscape beneath
+deco demon 14 1
+deco demon 14 2
+deco demon 15 3
+deco demon 16 3
+change grass 14 1
+change grass 14 2
+change grass 15 3
+change brush 16 3
+
+// The demons move up closer
+
+frame + 1
+deco fighter 14 4
+deco thief   13 4
+deco demon 14 1
+deco demon 13 3
+deco demon 15 3
+deco demon 16 3
+
+frame + 1
+deco fighter 14 4
+deco thief   13 4
+deco demon 14 2
+deco demon 13 3
+deco demon 15 3
+deco demon 16 3
+
+frame + 1
+deco fighter 14 4
+deco thief   13 4
+deco demon 14 2
+deco demon 13 3
+deco demon 14 3
+deco demon 16 3
+
+frame + 1
+deco fighter 14 4
+deco thief   13 4
+deco demon 14 2
+deco demon 13 3
+deco demon 14 3
+deco demon 15 3
+
+// Our other two heroes get out of the boat
+
+frame + 1
+deco fighter 14 4
+deco thief   13 4
+deco wizard  11 4
+deco demon 14 2
+deco demon 13 3
+deco demon 14 3
+deco demon 15 3
+
+frame + 1
+deco fighter 14 4
+deco thief   13 4
+deco demon 14 2
+deco demon 13 3
+deco demon 14 3
+deco demon 15 3
+
+frame + 1
+deco fighter 14 4
+deco thief   13 4
+deco wizard  12 5
+deco demon 14 2
+deco demon 13 3
+deco demon 14 3
+deco demon 15 3
+
+frame + 1
+deco fighter 14 4
+deco thief   13 4
+deco wizard  13 5
+deco demon 14 2
+deco demon 13 3
+deco demon 14 3
+deco demon 15 3
+
+frame + 1
+deco fighter 14 4
+deco thief   13 4
+deco wizard  14 5
+deco demon 14 2
+deco demon 13 3
+deco demon 14 3
+deco demon 15 3
+
+frame + 1
+deco fighter 14 4
+deco thief   13 4
+deco wizard  14 5
+deco cleric  11 4
+deco demon 14 2
+deco demon 13 3
+deco demon 14 3
+deco demon 15 3
+
+frame + 1
+deco fighter 14 4
+deco thief   13 4
+deco wizard  14 5
+deco demon 14 2
+deco demon 13 3
+deco demon 14 3
+deco demon 15 3
+
+frame + 1
+deco fighter 14 4
+deco thief   13 4
+deco wizard  14 5
+deco cleric  12 5
+deco demon 14 2
+deco demon 13 3
+deco demon 14 3
+deco demon 15 3
+
+frame + 1
+deco fighter 14 4
+deco thief   13 4
+deco wizard  14 5
+deco cleric  13 5
+deco demon 14 2
+deco demon 13 3
+deco demon 14 3
+deco demon 15 3
+
+// Both parties are now in position for a duel
+
+frame + 1 // 1
+deco fighter 14 4
+deco thief   13 4
+deco wizard  14 5
+deco cleric  13 5
+deco demon 14 2
+deco normalball 13 3
+deco demon 14 3
+deco demon 15 3
+
+frame + 1 // 2
+deco fighter 14 4
+deco thief   13 4
+deco wizard  14 5
+deco cleric  13 5
+deco demon 14 2
+deco demon 13 3
+deco demon 14 3
+deco demon 15 3
+
+frame + 1 // 3
+deco fighter 14 4
+deco thief   13 4
+deco wizard  14 5
+deco cleric  13 5
+deco demon 14 2
+deco demon 13 3
+deco normalball 14 3
+deco demon 15 3
+
+frame + 1 // 4
+deco fighter 14 4
+deco thief   13 4
+deco wizard  14 5
+deco cleric  13 5
+deco demon 14 2
+deco demon 13 3
+deco demon 14 3
+deco demon 15 3
+
+frame + 1 // 5
+deco fighter 14 4
+deco normalball   13 4
+deco wizard  14 5
+deco cleric  13 5
+deco demon 14 2
+deco demon 13 3
+deco demon 14 3
+deco demon 15 3
+
+frame + 1 // 6
+deco fighter 14 4
+deco thief   13 4
+deco wizard  14 5
+deco cleric  13 5
+deco demon 14 2
+deco demon 13 3
+deco demon 14 3
+deco demon 15 3
+
+frame + 1 // 7
+deco normalball 14 4
+deco thief   13 4
+deco wizard  14 5
+deco cleric  13 5
+deco demon 14 2
+deco demon 13 3
+deco demon 14 3
+deco demon 15 3
+
+frame + 1 // 8
+deco fighter 14 4
+deco thief   13 4
+deco wizard  14 5
+deco cleric  13 5
+deco demon 14 2
+deco demon 13 3
+deco demon 14 3
+deco demon 15 3
+
+// Round 2
+
+frame + 1
+deco fighter 14 4
+deco thief   13 4
+deco wizard  14 5
+deco cleric  13 5
+deco demon 14 2
+deco normalball 13 3
+deco demon 14 3
+deco demon 15 3
+
+frame + 1
+deco fighter 14 4
+deco thief   13 4
+deco wizard  14 5
+deco cleric  13 5
+deco demon 14 2
+deco demon 13 3
+deco demon 14 3
+deco demon 15 3
+
+frame + 1
+deco fighter 14 4
+deco thief   13 4
+deco wizard  14 5
+deco cleric  13 5
+deco demon 14 2
+deco demon 13 3
+deco normalball 14 3
+deco demon 15 3
+
+frame + 1
+deco fighter 14 4
+deco thief   13 4
+deco wizard  14 5
+deco cleric  13 5
+deco demon 14 2
+deco demon 13 3
+deco demon 15 3
+
+frame + 1
+deco fighter 14 4
+deco thief   13 4
+deco wizard  14 5
+deco cleric  13 5
+deco demon 14 2
+deco demon 13 3
+deco demon 14 3 // The rightmost demon moves in to fill the gap
+
+frame + 1
+deco fighter 14 4
+deco normalball 13 4
+deco wizard  14 5
+deco cleric  13 5
+deco demon 14 2
+deco demon 13 3
+deco demon 14 3
+
+frame + 1
+deco fighter 14 4
+deco thief   13 4
+deco wizard  14 5
+deco cleric  13 5
+deco demon 14 2
+deco demon 13 3
+deco demon 14 3
+
+frame + 1
+deco fighter 14 4
+deco thief   13 4
+deco wizard  14 5
+deco cleric  13 5
+deco demon 14 2
+deco normalball 13 3
+deco demon 14 3
+
+frame + 1
+deco fighter 14 4
+deco thief   13 4
+deco wizard  14 5
+deco cleric  13 5
+deco demon 14 2
+deco demon 14 3
+
+frame + 1
+deco fighter 14 4
+deco thief   13 4
+deco wizard  14 5
+deco cleric  13 5
+deco demon 13 3 // The topmost demon moves down to the front row
+deco demon 14 3
+
+frame + 1
+deco normalball 14 4
+deco thief   13 4
+deco wizard  14 5
+deco cleric  13 5
+deco demon 13 3
+deco demon 14 3
+
+frame + 1
+deco fighter 14 4
+deco thief   13 4
+deco wizard  14 5
+deco cleric  13 5
+deco demon 13 3
+deco demon 14 3
+
+frame + 1
+deco fighter 14 4
+deco thief   13 4
+deco wizard  14 5
+deco cleric  13 5
+deco normalball 13 3
+deco demon 14 3
+
+frame + 1
+deco fighter 14 4
+deco thief   13 4
+deco wizard  14 5
+deco cleric  13 5
+deco demon 14 3 // One demon left
+
+frame + 1
+deco fighter 14 4
+deco thief   13 4
+deco wizard  14 5
+deco cleric  13 5
+deco normalball 14 3
+
+frame + 1
+deco fighter 14 4
+deco thief   13 4
+deco wizard  14 5
+deco cleric  13 5
+deco demon 14 3
+
+frame + 1
+deco fighter 14 4
+deco thief   13 3 // The thief moves up
+deco wizard  14 5
+deco cleric  13 5
+deco demon 14 3
+
+frame + 1
+deco normalball 14 4
+deco thief   13 3
+deco wizard  14 5
+deco cleric  13 5
+deco demon 14 3
+
+frame + 1
+deco fighter 14 4
+deco thief   13 3
+deco wizard  14 5
+deco cleric  13 5
+deco demon 14 3
+
+frame + 1
+deco fighter 14 4
+deco thief   13 3
+deco wizard  14 5
+deco cleric  13 5
+deco normalball 14 3 // one hit
+
+frame + 1
+deco fighter 14 4
+deco thief   13 3
+deco wizard  14 5
+deco cleric  13 5
+deco demon 14 3
+
+frame + 1
+deco fighter 14 4
+deco thief   13 3
+deco wizard  14 5
+deco cleric  13 5
+deco normalball 14 3 // last hit
+
+// The demons are gone
+
+frame + 1
+deco fighter 14 4
+deco thief   13 3
+deco wizard  14 5
+deco cleric  13 5
+
+frame + 1
+deco fighter 14 4
+deco thief   13 3
+deco wizard  14 5
+deco cleric  13 5
+
+frame + 1
+deco fighter 14 4
+deco thief   13 3
+deco wizard  14 5
+deco cleric  13 5
+
+// Enter the dragon
+
+frame + 1
+deco fighter 14 4
+deco thief   13 3
+deco wizard  14 5
+deco cleric  13 5
+deco dragon 17 1
+
+frame + 1
+deco fighter 14 4
+deco thief   13 3
+deco wizard  14 5
+deco cleric  13 5
+deco dragon 17 1
+
+frame + 1
+deco fighter 14 4
+deco thief   13 3
+deco wizard  14 5
+deco cleric  13 5
+deco dragon 17 1
+
+// The dragon fires for the first time
+
+frame + 1
+deco fighter 14 4
+deco thief   13 3
+deco wizard  14 5
+deco cleric  13 5
+deco dragon 17 1
+deco normalball 16 2
+
+frame + 1
+deco fighter 14 4
+deco thief   13 3
+deco wizard  14 5
+deco cleric  13 5
+deco dragon 17 1
+deco normalball 15 3
+
+frame + 1
+deco normalball 14 4 // The fighter is hit
+deco thief   13 3
+deco wizard  14 5
+deco cleric  13 5
+deco dragon 17 1
+
+frame + 1
+deco fighter 14 4
+deco thief   13 3
+deco wizard  14 5
+deco cleric  13 5
+deco dragon 17 1
+
+frame + 1
+deco fighter 14 4
+deco thief   12 4 // The thief starts moving
+deco wizard  14 5
+deco cleric  13 5
+deco dragon 17 1
+
+frame + 1
+deco fighter 14 4
+deco thief   12 4
+deco wizard  14 5
+deco cleric  12 5
+deco dragon 17 1
+
+frame + 1
+deco fighter 14 4
+deco thief   12 4
+deco wizard  13 5
+deco cleric  12 5
+deco dragon 17 1
+
+frame + 1
+deco fighter 13 4
+deco thief   12 4
+deco wizard  13 5
+deco cleric  12 5
+deco dragon 17 1
+
+// The dragon fires at the party again
+
+frame + 1
+deco fighter 13 4
+deco thief   12 4
+deco wizard  13 5
+deco cleric  12 5
+deco dragon 17 1
+deco normalball 16 2
+
+frame + 1
+deco fighter 13 4
+deco thief   12 4
+deco wizard  13 5
+deco cleric  12 5
+deco dragon 17 1
+deco normalball 15 3
+
+frame + 1
+deco fighter 13 4
+deco thief   12 4
+deco wizard  13 5
+deco cleric  12 5
+deco dragon 17 1
+deco normalball 14 4
+
+frame + 1
+deco fighter 13 4
+deco thief   12 4
+deco normalball 13 5 // The wizard is hit
+deco cleric  12 5
+deco dragon 17 1
+
+frame + 1
+deco fighter 13 4
+deco thief   12 4
+deco wizard  13 5
+deco cleric  12 5
+deco dragon 17 1
+
+// The party moves into the boat
+
+frame + 1
+deco fighter 13 4
+deco thief   11 4
+deco wizard  13 5
+deco cleric  12 5
+deco dragon 17 1
+
+frame + 1
+deco fighter 13 4
+deco wizard  13 5
+deco cleric  12 5
+deco dragon 17 1
+
+frame + 1
+deco fighter 13 4
+deco wizard  13 5
+deco cleric  11 4
+deco dragon 17 1
+
+frame + 1
+deco fighter 13 4
+deco wizard  13 5
+deco dragon 17 1
+
+frame + 1
+deco fighter 13 4
+deco wizard  12 5
+deco dragon 17 1
+
+frame + 1
+deco fighter 12 4
+deco wizard  12 5
+deco dragon 17 1
+
+frame + 1
+deco fighter 12 4
+deco wizard  12 5
+deco dragon 16 2 // The dragon moves
+
+frame + 1
+deco fighter 12 4
+deco wizard  11 4
+deco dragon 16 2
+
+frame + 1
+deco fighter 12 4
+deco dragon 16 2
+
+frame + 1
+deco fighter 11 4
+deco dragon 16 2
+
+frame + 1
+deco ship 11 4
+change water 11 4 // The ship becomes unglued
+deco dragon 16 2
+
+frame + 1
+deco ship 11 4
+deco dragon 15 3 // The dragon moves again
+
+// The ship launches
+
+frame + 1
+deco ship 11 3
+deco dragon 15 3
+
+frame + 1
+deco ship 11 3
+deco dragon 15 3
+deco normalball 14 3
+
+frame + 1
+deco ship 11 3
+deco dragon 15 3
+deco normalball 13 3
+
+frame + 1
+deco ship 11 3
+deco dragon 15 3
+deco normalball 12 3
+
+frame + 1
+deco normalball 11 3
+deco dragon 15 3
+
+frame + 1
+deco ship 11 3
+deco dragon 15 3
+
+frame + 1
+deco ship 11 3
+deco dragon 15 3
+
+// The ship fires back at the dragon
+
+frame + 1
+deco ship 11 3
+deco dragon 15 3
+deco normalball 12 3
+
+frame + 1
+deco ship 11 3
+deco dragon 15 3
+deco normalball 13 3
+
+frame + 1
+deco ship 11 3
+deco dragon 15 3
+deco normalball 14 3
+
+frame + 1
+deco ship 11 3
+deco normalball 15 3
+
+frame + 1
+deco ship 11 3
+deco dragon 15 3
+
+frame + 1
+deco ship 11 3
+deco dragon 15 3
+deco normalball 14 3
+
+frame + 1
+deco ship 11 3
+deco dragon 15 3
+deco normalball 13 3
+
+frame + 1
+deco ship 11 3
+deco dragon 15 3
+deco normalball 12 3
+
+frame + 1
+deco ship 11 2 // The ship dodges!
+deco dragon 15 3
+deco normalball 12 3
+
+frame + 1
+deco ship 11 2
+deco dragon 15 3
+deco normalball 11 3
+
+frame + 1
+deco ship 11 2
+deco dragon 15 3
+deco normalball 10 3
+
+frame + 1
+deco ship 11 2
+deco dragon 14 2 // The dragon moves closer
+
+frame + 1
+deco ship 11 2
+deco dragon 14 2
+deco normalball 12 2
+
+frame + 1
+deco ship 11 2
+deco dragon 14 2
+deco normalball 13 2
+
+frame + 1
+deco ship 11 2
+deco normalball 14 2
+
+// The dragon is dead!
+
+frame + 1
+deco ship 11 2
+
+frame + 1
+deco ship 11 2
+
+frame + 1
+deco ship 10 2 // The ship starts to move again
+
+frame + 1
+deco ship 9 3
+
+frame + 1
+deco ship 8 3
+
+frame + 1
+deco ship 7 4
+
+frame + 1
+change ship 6 4 // Park the ship again
+
+frame + 1
+
+frame + 1
+
+frame + 1
+
+// Pirates!
+
+frame + 1
+deco pirates 12 0
+
+frame + 1
+deco pirates 12 0
+
+frame + 1
+deco pirates 12 0
+
+frame + 1
+deco pirates 12 1
+
+frame + 1
+deco pirates 11 1
+
+frame + 1
+deco thief 10 1
+deco pirates 10 1
+
+frame + 1
+deco pirates 10 1
+
+frame + 1
+deco thief 9 0
+deco pirates 10 1
+
+frame + 1
+deco thief 9 0
+deco thief 10 1
+deco pirates 10 1
+
+frame + 1
+deco thief 9 0
+deco pirates 10 1
+
+frame + 1
+deco thief 9 0
+deco thief 9 1
+deco pirates 10 1
+
+frame + 1
+deco thief 9 0
+deco thief 9 1
+deco thief 10 1
+deco pirates 10 1
+
+frame + 1
+deco thief 9 0
+deco thief 9 1
+deco pirates 10 1
+
+frame + 1
+deco thief 9 0
+deco thief 9 1
+deco thief 10 0
+deco pirates 10 1
+
+frame + 1
+deco thief 8 0
+deco thief 9 1
+deco thief 10 0
+deco pirates 10 1
+
+// All the pirates are out
+
+frame + 1
+deco thief 8 0
+deco thief 9 1
+deco thief 10 0
+deco pirates 10 1
+deco fighter 5 1 // Out comes the fighter
+
+frame + 1
+deco thief 8 0
+deco thief 9 1
+deco thief 10 0
+deco pirates 10 1
+deco fighter 5 0
+
+frame + 1
+deco thief 7 0 // The thieves advance
+deco thief 9 1
+deco thief 10 0
+deco pirates 10 1
+deco fighter 5 0
+
+frame + 1
+deco thief 7 0
+deco thief 8 1
+deco thief 10 0
+deco pirates 10 1
+deco fighter 5 0
+
+frame + 1
+deco thief 7 0
+deco thief 8 1
+deco thief 9 0
+deco pirates 10 1
+deco fighter 5 0
+
+frame + 1
+deco thief 7 0
+deco thief 8 1
+deco thief 9 0
+deco pirates 10 1
+deco fighter 5 0
+deco wizard  5 1 // Out comes the wizard
+
+frame + 1
+deco thief 7 0
+deco thief 8 1
+deco thief 9 0
+deco pirates 10 1
+deco fighter 6 0
+deco wizard  5 1
+
+frame + 1
+deco thief 7 0
+deco thief 8 1
+deco thief 9 0
+deco pirates 10 1
+deco fighter 6 0
+deco wizard  5 0
+
+// They start fighting the pirates
+
+frame + 1
+deco thief 7 0
+deco thief 8 1
+deco thief 9 0
+deco pirates 10 1
+deco normalball 6 0
+deco wizard  5 0
+
+frame + 1
+deco thief 7 0
+deco thief 8 1
+deco thief 9 0
+deco pirates 10 1
+deco fighter 6 0
+deco wizard  5 0
+
+frame + 1
+deco normalball 7 0
+deco thief 8 1
+deco thief 9 0
+deco pirates 10 1
+deco fighter 6 0
+deco wizard  5 0
+
+frame + 1
+deco thief 7 0
+deco thief 8 1
+deco thief 9 0
+deco pirates 10 1
+deco fighter 6 0
+deco wizard  5 0
+
+// The wizard strikes
+
+frame + 1
+deco thief 7 0
+deco thief 8 1
+deco thief 9 0
+deco pirates 10 1
+deco magicball 6 0
+deco wizard  5 0
+
+frame + 1
+deco thief 7 0
+deco thief 8 1
+deco thief 9 0
+deco pirates 10 1
+deco fighter 6 0
+deco wizard  5 0
+
+frame + 1
+deco thief 7 0
+deco thief 8 1
+deco thief 9 0
+deco pirates 10 1
+deco fighter 6 0
+deco wizard  5 0
+
+frame + 1
+deco magicball 7 0
+deco thief 8 1
+deco thief 9 0
+deco pirates 10 1
+deco fighter 6 0
+deco wizard  5 0
+
+frame + 1
+deco thief 8 1
+deco thief 9 0
+deco pirates 10 1
+deco fighter 6 0
+deco wizard  5 0
+deco magicball 8 0
+
+frame + 1
+deco thief 8 1
+deco magicball 9 0
+deco pirates 10 1
+deco fighter 6 0
+deco wizard  5 0
+
+frame + 1
+deco thief 8 1 // He's all alone and he thinks about it for two frames
+deco pirates 10 1
+deco fighter 6 0
+deco wizard  5 0
+
+frame + 1
+deco thief 8 1
+deco pirates 10 1
+deco fighter 6 0
+deco wizard  5 0
+
+frame + 1
+deco thief 9 1 // Thief runs away
+deco pirates 10 1
+deco fighter 6 0
+deco wizard  5 0
+
+frame + 1
+deco thief 10 1
+deco pirates 10 1
+deco fighter 6 0
+deco wizard  5 0
+
+frame + 1
+deco pirates 10 1
+deco fighter 6 0
+deco wizard  5 0
+
+frame + 1
+deco pirates 11 1
+deco fighter 6 0
+deco wizard  5 0
+
+frame + 1
+deco pirates 12 0
+deco fighter 6 0
+deco wizard  5 0
+
+frame + 1
+deco fighter 6 0
+deco wizard  5 0
+
+frame + 1
+deco fighter 6 0
+deco wizard  5 0
+
+frame + 1
+deco fighter 6 0
+deco wizard  5 0
+
+// Figher and wizard go back inside
+
+frame + 1
+deco fighter 6 0
+deco wizard  5 1
+
+frame + 1
+deco fighter 5 0
+
+frame + 1
+deco fighter 5 1
+
+frame + 1
+
+frame + 1
+
+frame + 1
+
+// Skeletons emerge!
+
+frame + 1
+deco skeleton 17 1
+
+frame + 1
+deco skeleton 16 1
+
+frame + 1
+deco skeleton 16 1
+deco skeleton 17 1
+
+frame + 1
+deco skeleton 15 2
+deco skeleton 17 1
+
+frame + 1
+deco skeleton 15 2
+deco skeleton 16 1
+
+frame + 1
+deco skeleton 15 2
+deco skeleton 16 1
+deco skeleton 17 1
+
+frame + 1
+deco skeleton 15 2
+deco skeleton 16 1
+deco skeleton 16 2
+
+// The ship starts moving over
+
+frame + 1
+deco skeleton 15 2
+deco skeleton 16 1
+deco skeleton 16 2
+deco ship 7 4
+change water 6 4
+
+frame + 1
+deco skeleton 15 2
+deco skeleton 16 1
+deco skeleton 16 2
+deco ship 8 3
+
+frame + 1
+deco skeleton 15 2
+deco skeleton 16 1
+deco skeleton 16 2
+deco ship 9 3
+
+frame + 1
+deco skeleton 15 2
+deco skeleton 16 1
+deco skeleton 16 2
+deco ship 10 3
+
+frame + 1
+deco skeleton 15 2
+deco skeleton 16 1
+deco skeleton 16 2
+deco ship 11 3
+
+frame + 1
+deco skeleton 15 2
+deco skeleton 16 1
+deco skeleton 16 2
+deco ship 12 3
+
+// The ship has landed
+
+frame + 1
+deco skeleton 15 1
+deco skeleton 15 2
+deco skeleton 16 2
+deco ship 12 3
+
+frame + 1
+deco skeleton 15 1
+deco skeleton 15 2
+deco skeleton 16 3
+deco ship 12 3
+
+// A sea serpent appears!
+
+frame + 1
+deco skeleton 15 1
+deco skeleton 15 2
+deco skeleton 16 3
+deco serpent 11 0
+deco ship 12 3
+
+frame + 1
+deco skeleton 15 1
+deco skeleton 15 2
+deco skeleton 16 3
+deco serpent 11 0
+deco cleric 12 3
+deco ship 12 3
+
+frame + 1
+deco skeleton 15 1
+deco skeleton 15 2
+deco skeleton 16 3
+deco serpent 11 0
+deco ship 12 3
+
+frame + 1
+deco skeleton 15 1
+deco skeleton 15 2
+deco skeleton 16 3
+deco serpent 11 0
+deco cleric 13 3 // Out steps the cleric onto the shore
+deco ship 12 3
+
+frame + 1
+deco skeleton 15 1
+deco skeleton 15 3
+deco skeleton 16 3
+deco serpent 11 0
+deco cleric 13 3
+deco ship 12 3
+
+frame + 1
+deco skeleton 15 2
+deco skeleton 15 3
+deco skeleton 16 3
+deco serpent 11 0
+deco cleric 13 3
+deco ship 12 3
+
+frame + 1
+// They pause for another frame
+deco skeleton 15 2
+deco skeleton 15 3
+deco skeleton 16 3
+deco serpent 11 0
+deco cleric 13 3
+deco ship 12 3
+
+frame + 1
+deco magicball 14 3 // The cleric attacks
+deco skeleton 15 2
+deco skeleton 15 3
+deco skeleton 16 3
+deco serpent 11 0
+deco cleric 13 3
+deco ship 12 3
+
+frame + 1
+deco magicball 15 3
+deco skeleton 15 2
+deco skeleton 15 3
+deco skeleton 16 3
+deco serpent 11 0
+deco cleric 13 3
+deco ship 12 3
+
+frame + 1
+deco skeleton 15 2
+deco skeleton 16 3
+deco serpent 12 1 // The serpent has moved down
+deco cleric 13 3
+deco ship 12 3
+
+frame + 1
+deco magicball 12 2
+deco skeleton 15 2
+deco skeleton 16 3
+deco serpent 12 1
+deco cleric 13 3
+deco ship 12 3
+
+frame + 1
+deco magicball 12 3
+deco skeleton 15 2
+deco skeleton 16 3
+deco serpent 12 1
+deco cleric 13 3
+deco ship 12 3
+
+frame + 1
+deco skeleton 15 2
+deco skeleton 16 3
+deco serpent 12 1
+deco cleric 13 3
+deco ship 12 3
+
+frame + 1
+deco skeleton 15 3 // The second skeleton moves down into position
+deco skeleton 16 3
+deco serpent 12 1
+deco cleric 13 3
+deco ship 12 3
+
+frame + 1
+deco magicball 14 3
+deco skeleton 15 3
+deco skeleton 16 3
+deco serpent 12 1
+deco cleric 13 3
+deco ship 12 3
+
+frame + 1
+deco magicball 15 3
+deco skeleton 15 3
+deco skeleton 16 3
+deco serpent 12 1
+deco cleric 13 3
+deco ship 12 3
+
+// One skeleton left... sit here for two frames and consider
+
+frame + 1
+deco skeleton 16 3
+deco serpent 12 1
+deco cleric 13 3
+deco ship 12 3
+
+frame + 1
+deco skeleton 16 3
+deco serpent 12 1
+deco cleric 13 3
+deco ship 12 3
+
+frame + 1
+deco magicball 12 2 // The serpent fires on the ship again
+deco skeleton 16 3
+deco serpent 12 1
+deco cleric 13 3
+deco ship 12 3
+
+frame + 1
+deco magicball 12 3
+deco skeleton 16 3
+deco serpent 12 1
+deco cleric 13 3
+deco ship 12 3
+
+frame + 1
+deco skeleton 16 3
+deco serpent 12 1
+deco cleric 13 3
+deco ship 12 3
+
+frame + 1
+deco skeleton 16 2 // Skeleton starts moving
+deco serpent 12 1
+deco cleric 13 3
+deco ship 12 3
+
+frame + 1
+deco skeleton 16 2
+deco serpent 12 1
+deco cleric 12 3 // Cleric goes back to the ship
+deco ship 12 3
+
+frame + 1
+deco skeleton 17 1
+deco serpent 12 1
+deco cleric 12 3
+deco ship 12 3
+
+frame + 1
+deco skeleton 17 1
+deco serpent 12 1
+deco ship 12 3
+
+// The skeleton is gone... consider for two frames
+
+frame + 1
+deco serpent 12 1
+deco ship 12 3
+
+frame + 1
+deco serpent 12 1
+deco ship 12 3
+
+frame + 1
+deco magicball 12 2 // Serpent fires!
+deco serpent 12 1
+deco ship 12 3
+
+frame + 1
+deco magicball 12 3
+deco serpent 12 1
+deco ship 12 3
+
+frame + 1
+deco serpent 12 1
+deco ship 12 3
+
+frame + 1
+deco serpent 12 1
+deco ship 12 3
+
+frame + 1
+deco normalball 12 2
+deco serpent 12 1
+deco ship 12 3
+
+frame + 1
+deco normalball 12 1
+deco serpent 12 1
+deco ship 12 3
+
+// Just the ship left
+
+frame + 1
+deco ship 12 3
+
+frame + 1
+deco ship 12 3
+
+frame + 1
+deco ship 12 3
+
+frame + 1
+deco ship 11 3 // Ship starts moving again
+
+frame + 1
+deco ship 10 3
+
+frame + 1
+deco ship 9 4
+
+frame + 1
+deco ship 8 4
+
+frame + 1
+deco ship 7 3
+
+frame + 1
+deco ship 6 2
+
+frame + 1
+deco ship 5 2
+
+// The ship is parked outside the castle
+
+frame + 1
+deco fighter 5 2
+deco ship 5 2
+
+frame + 1
+deco ship 5 2
+
+frame + 1
+deco fighter 5 1
+deco ship 5 2
+
+frame + 1
+deco cleric 5 2
+deco ship 5 2
+
+frame + 1
+deco ship 5 2
+
+frame + 1
+deco cleric 5 1
+deco ship 5 2
+
+frame + 1
+deco wizard 5 2
+deco ship 5 2
+
+frame + 1
+deco ship 5 2
+
+frame + 1
+deco wizard 5 1
+deco ship 5 2
+
+frame + 1
+deco ship 5 2
+
+frame + 1
+deco ship 5 2
+
+frame + 1
+change ship 5 3
+
+frame + 1
+
+frame + 1
+
+frame + 1
+deco thief 5 3
+
+frame + 1
+
+frame + 1
+deco thief 5 4
+
+frame + 1
+
+frame + 1
+
+frame + 1
+
+frame + 1
+
+// The pincher emerges
+
+frame + 1
+deco pincher 17 1
+
+frame + 1
+deco pincher 16 2
+
+frame + 1
+deco pincher 16 2
+deco fighter 5 1
+
+frame + 1
+deco pincher 16 2
+deco fighter 4 1
+
+frame + 1
+deco pincher 16 2
+deco fighter 4 2
+
+frame + 1
+deco pincher 16 2
+deco fighter 3 3
+
+frame + 1
+deco pincher 16 2
+deco fighter 2 4
+
+frame + 1
+deco pincher 16 2
+deco fighter 1 4
+
+frame + 1
+deco pincher 16 2
+deco fighter 0 4
+
+frame + 1
+deco pincher 16 2
+deco fighter 0 5
+
+frame + 1
+deco pincher 16 2
+deco fighter 18 3 
+change forest 0 5
+change moongate 18 3
+
+frame + 1
+deco pincher 16 2
+
+frame + 1
+deco pincher 16 2
+deco fighter 17 3 
+
+frame + 1
+deco pincher 16 2
+deco fighter 16 3 
+
+// The fighter and the pincher attack each other
+
+frame + 1
+deco normalball 16 3
+deco pincher 16 2
+deco fighter 16 3 
+
+frame + 1
+deco pincher 16 2
+deco fighter 16 3 
+
+frame + 1
+deco normalball 16 2
+deco pincher 16 2
+deco fighter 16 3 
+
+frame + 1
+deco pincher 16 2
+deco fighter 16 3 
+
+frame + 1
+deco normalball 16 3
+deco pincher 16 2
+deco fighter 16 3 
+
+frame + 1
+deco pincher 16 2
+deco fighter 16 3 
+
+frame + 1
+deco normalball 16 2
+deco pincher 16 2
+deco fighter 16 3 
+
+frame + 1
+deco fighter 16 3 // He wins!
+
+frame + 1
+deco fighter 16 3
+
+frame + 1
+deco fighter 16 3
+
+
+// The fighter walks back alone
+
+frame + 1
+deco fighter 17 3
+
+frame + 1
+deco fighter 18 3
+
+frame + 1
+deco fighter 0 5
+change brush 18 3
+change moongate 0 5
+
+frame + 1
+
+frame + 1
+deco fighter 0 4
+
+frame + 1
+deco fighter 1 4
+
+frame + 1
+deco fighter 2 3
+
+frame + 1
+deco fighter 3 2
+
+frame + 1
+deco fighter 4 1
+
+frame + 1
+deco fighter 5 1
+
+frame + 1
+
+frame + 1
+
+frame + 1
+
+frame + 1
+
+// Out comes the Ranger
+
+frame + 1
+deco avatar 5 1
+
+frame + 1
+deco avatar 4 1
+
+frame + 1
+deco avatar 3 2
+
+frame + 1
+deco avatar 2 3
+
+frame + 1
+deco avatar 1 4
+
+frame + 1
+deco avatar 0 4
+
+frame + 1
+deco avatar 0 5
+
+frame + 1
+deco avatar 18 3
+change forest 0 5
+change moongate 18 3
+
+frame + 1
+
+frame + 1
+deco avatar 17 3
+
+frame + 1
+deco avatar 16 2
+
+frame + 1
+deco avatar 17 1
+
+frame + 1
+deco avatar 17 1
+
+frame + 1
+deco avatar 17 1
+
+// The avatar is gone!
+
+frame + 1
+
+frame + 1
+
+frame + 1
+change moongate 0 5
+change brush 18 3
+
+frame + 1
+
+frame + 1
+
+frame + 1
+
+frame + 1
+
+// Out comes the balron
+
+frame + 1
+deco balron 17 1
+
+frame + 1
+deco balron 17 1
+
+frame + 1
+deco balron 17 1
+
+frame + 1
+deco balron 17 2
+
+frame + 1
+deco balron 17 2
+
+frame + 1
+deco balron 17 2
+
+frame + 1
+deco balron 17 2
+deco avatar 17 1
+
+frame + 1
+deco balron 17 2
+deco avatar 17 1
+
+frame + 1
+deco balron 17 2
+deco avatar 17 1
+
+// The avatar and the balron attack each other
+
+frame + 1
+deco normalball 17 1
+deco balron 17 2
+deco avatar 17 1
+
+frame + 1
+deco balron 17 2
+deco avatar 17 1
+
+frame + 1
+deco normalball 17 2
+deco balron 17 2
+deco avatar 17 1
+
+frame + 1
+deco balron 17 2
+deco avatar 17 1
+
+frame + 1
+deco balron 17 1
+
+frame + 1 // Frame 363
+frame + 1 // Frame 364
+frame + 1 // Frame 365
+
+// frame 1
+// change t 6 2 change h 7 2 change e 8 2 change _ 9 2 change e 10 2 change n 11 2 change d 12 2
+// change g 5 2 change a 6 2 change m 7 2 change e 8 2 change _ 9 2 change o 10 2 change u 11 2 change e 12 2 change r 13 2

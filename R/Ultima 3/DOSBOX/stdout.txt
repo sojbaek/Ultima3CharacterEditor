@@ -1,0 +1,8 @@
+DOSBox version 0.74
+Copyright 2002-2010 DOSBox Team, published under GNU GPL.
+---
+CONFIG:Loading primary settings from config file ..\dosboxULTIMA3.conf
+CONFIG:Loading additional settings from config file ..\dosboxULTIMA3_single.conf
+MIDI:Opened device:win32
+One joystick reported, initializing with 4axis
+Using joystick Wireless Controller with 6 axes, 14 buttons and 1 hat(s)

@@ -1,0 +1,38 @@
+
+{
+    "gameId" : "1207662613",
+    "rootGameId" : "1207662613",
+    "standalone" : true,
+    "dependencyGameId" : "",
+    "language"         : "English",
+    "name"             : "Ultima III - Exodus",
+    "playTasks"        : [
+        {
+            "isPrimary" : true,
+            "type"      : "FileTask",
+            "path"      : "DOSBOX\\dosbox.exe",
+            "workingDir" : "DOSBOX",
+            "arguments"  : "-conf \"..\\dosboxULTIMA3.conf\" -conf \"..\\dosboxULTIMA3_single.conf\" -noconsole -c \"exit\""
+        },
+        {
+            "name" : "Graphic Mode Setup",
+            "type" : "FileTask",
+            "path" : "DOSBOX\\GOGDOSConfig.exe",
+            "workingDir" : "DOSBOX",
+            "arguments"  : "1207662613"
+        }
+    ],
+    "supportTasks"     : [
+        {
+            "name" : "Support",
+            "type" : "URLTask",
+            "link" : "http://www.gog.com/en/support/ultima_1_2_3"
+        },
+        {
+            "name" : "Manual",
+            "type" : "FileTask",
+            "path" : "Ultima_3_manual.pdf",
+            "workingDir" : ""
+        }
+    ]
+}
